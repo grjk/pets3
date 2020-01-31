@@ -20,11 +20,12 @@ $f3 -> route("GET /", function () {
 });
 
 // Define a default route (view)
-$f3 -> route("GET /order", function () {
-    $view = new Template();
-
+$f3 -> route("GET|POST /order", function ()
+    {
+        $view = new Template();
     echo $view->render("views/form1.html");
 });
+
 
 // Define a default route (view)
 $f3 -> route("GET|POST /order2", function () {
