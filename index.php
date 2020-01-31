@@ -40,7 +40,18 @@ $f3 -> route("GET|POST /order", function ($f3) {
 
 
 // Define a default route (view)
-$f3 -> route("GET|POST /order2", function () {
+$f3 -> route("GET|POST /order2", function ($f3) {
+    session_destroy();
+    if (isset($_POST['colors'])){
+        $colors = $_POST['colors'];
+        if (validColor($colors)){
+            $_SESSION['colors'] = $colors;
+            $f3->reroute('/results');
+        }
+        else{
+            $f3->set("errors['color']", "Please choose a color.");
+        }
+    }
     $view = new Template();
     $_SESSION['animal'] = $_POST['animal'];
     echo $view->render("views/form2.html");
