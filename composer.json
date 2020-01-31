@@ -1,0 +1,16 @@
+{
+  "name": "328/pets3",
+  "authors": [
+    {
+      "name": "Joshua Kristiansen",
+      "email": "jkristiansen@mail.greenriver.edu"
+    },
+    {
+      "name": "Dallas Sloan",
+      "email": "dsloan4@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
