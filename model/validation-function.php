@@ -6,5 +6,5 @@ function validColor($color){
 }
 
 function validString($string){
-    return isset($string);
+    return !empty(trim($string));
 }
