@@ -42,6 +42,7 @@ $f3 -> route("GET|POST /order", function ($f3) {
 // Define a default route (view)
 $f3 -> route("GET|POST /order2", function ($f3) {
     session_destroy();
+    var_dump($_POST);
     if (isset($_POST['colors'])){
         $colors = $_POST['colors'];
         if (validColor($colors)){
