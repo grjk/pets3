@@ -22,13 +22,12 @@ $f3 -> route("GET /", function () {
 
 // Define a default route (view)
 $f3 -> route("GET|POST /order", function ($f3) {
-    session_destroy();
-
+    unset($_SESSION['animals']);
     if (isset($_POST['animal'])) {
         $animal = $_POST['animal'];
 
         if (validString($animal)) {
-            $_SESSION['animal'] = $animal;
+            $_SESSION['animals'] = $_POST['animal'];
             $f3->reroute('/order2');
         } else {
             $f3->set("errors['animal']", "Please enter an animal.");
@@ -41,8 +40,9 @@ $f3 -> route("GET|POST /order", function ($f3) {
 
 // Define a default route (view)
 $f3 -> route("GET|POST /order2", function ($f3) {
-    session_destroy();
-    var_dump($_POST);
+    unset($_SESSION["colors"]);
+    //session_destroy();
+
     if (isset($_POST['colors'])){
         $colors = $_POST['colors'];
         if (validColor($colors)){
@@ -61,13 +61,12 @@ $f3 -> route("GET|POST /order2", function ($f3) {
 
 $f3 -> route("GET|POST /results", function () {
     $view = new Template();
-    $_SESSION['color'] = $_POST['color'];
     echo $view->render("views/results.html");
 });
 
 
 
-$f3->route('GET /@animal',function ($f3, $params) {
+/*$f3->route('GET /@animal',function ($f3, $params) {
 //    var_dump($params);
     $animal = $params['animal'];
     if ($animal == 'chicken') {
@@ -83,7 +82,7 @@ $f3->route('GET /@animal',function ($f3, $params) {
     } else {
         $f3->error(404);
     }
-});
+});*/
 
 // Run Fat-Free
 $f3->run();

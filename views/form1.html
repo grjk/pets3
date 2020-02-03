@@ -6,6 +6,10 @@
 </head>
 <body>
 <form method="post" action="#">
+    <check if="{{ isset(@errors['animal']) }}">
+        <p>{{ @errors['animal'] }}</p>
+    </check>
+
     <labeL>Animal:
         <input type="text" name="animal">
     </labeL>
