@@ -7,4 +7,7 @@ function validColor($color){
 
 function validString($string){
     return !empty(trim($string));
+
 }
+
+
